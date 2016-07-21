@@ -1,20 +1,29 @@
-class Teacher
-  attr_reader :age, :salary, :phase, :performance_rating, :target_raise
-  attr_accessor :name
+require_relative 'dbc_community'
+require_relative 'teaching_module'
+
+class Teacher < DBCCommunity
+  include Teaching
+  attr_reader :age, :phase, :performance_rating, :target_raise
+  attr_accessor :name, :salary
+  TARGET_RATING = 90
+
+
 
   def initialize(options={})
+    super
     @phase = 3
-    @age = options.fetch(:age, 0)
-    @name = options.fetch(:name, "")
+    # @age = options.fetch(:age, 0)
+    # @name = options.fetch(:name, "")
     @target_raise = 1000
   end
 
-  def offer_high_five
-    "High five!"
-  end
+  # def offer_high_five
+  #   "High five!"
+  # end
 
   def set_phase(num)
-    @phase = num
+    # @phase = num
+    super
     "Cool, I've always wanted to teach phase #{num}!"
   end
 
@@ -26,24 +35,24 @@ class Teacher
     response
   end
 
-  def salary=(new_salary)
-    puts "This better be good!"
-    @salary = new_salary
-  end
+  # def salary=(new_salary)
+  #   puts "This better be good!"
+  #   @salary = new_salary
+  # end
 
-  def receive_raise(raise)
-    @salary += raise
-  end
+  # def receive_raise(raise)
+  #   @salary += raise
+  # end
 
-  def set_performance_rating(rating)
-    response = ""
-    if rating > 90
-      receive_raise(@target_raise)
-      response = "Yay, I'm a great employee!"
-    else
-      response += "Oh, well -- thanks to this actionable, specific, and kind "
-      response += "feedback, I'll do better next time."
-    end
-    response
-  end
+  # def set_performance_rating(rating)
+  #   response = ""
+  #   if rating > 90
+  #     receive_raise(@target_raise)
+  #     response = "Yay, I'm a great employee!"
+  #   else
+  #     response += "Oh, well -- thanks to this actionable, specific, and kind "
+  #     response += "feedback, I'll do better next time."
+  #   end
+  #   response
+  # end
 end
