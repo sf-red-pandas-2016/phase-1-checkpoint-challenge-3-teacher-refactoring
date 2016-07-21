@@ -1,6 +1,7 @@
-class Teacher
-  attr_reader :age, :salary, :phase, :performance_rating, :target_raise
-  attr_accessor :name
+require_relative 'school_people'
+
+class Teacher < Schoolpeople
+  attr_reader  :salary,  :performance_rating, :target_raise
 
   def initialize(options={})
     @phase = 3
@@ -41,8 +42,7 @@ class Teacher
       receive_raise(@target_raise)
       response = "Yay, I'm a great employee!"
     else
-      response += "Oh, well -- thanks to this actionable, specific, and kind "
-      response += "feedback, I'll do better next time."
+      response += "Oh, well -- thanks to this actionable, specific, and kind feedback, I'll do better next time."
     end
     response
   end
