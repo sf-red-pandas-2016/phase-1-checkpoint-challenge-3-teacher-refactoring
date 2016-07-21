@@ -2,8 +2,8 @@ require_relative 'human'
 require_relative 'module'
 
 class ApprenticeTeacher < Human
-  attr_reader :age, :salary, :phase, :target_raise
-  attr_accessor :name
+  attr_reader  :salary, :target_raise
+
   include Teach
 
   RATING = 80
