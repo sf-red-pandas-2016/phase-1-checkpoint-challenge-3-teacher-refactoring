@@ -1,17 +1,18 @@
+require_relative 'school_methods'
+
 class Teacher
+  include HighFive
   attr_reader :age, :salary, :phase, :performance_rating, :target_raise
   attr_accessor :name
-
+  RATING = 90
+  TARGET_RAISE = 1000
   def initialize(options={})
     @phase = 3
     @age = options.fetch(:age, 0)
     @name = options.fetch(:name, "")
-    @target_raise = 1000
+    @target_raise = TARGET_RAISE
   end
 
-  def offer_high_five
-    "High five!"
-  end
 
   def set_phase(num)
     @phase = num
@@ -37,7 +38,7 @@ class Teacher
 
   def set_performance_rating(rating)
     response = ""
-    if rating > 90
+    if rating > self.class::RATING
       receive_raise(@target_raise)
       response = "Yay, I'm a great employee!"
     else
