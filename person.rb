@@ -3,7 +3,6 @@ class Person
   attr_accessor :name
 
   def initialize(options={})
-    # find the ruby syntax for how to render one initialize method into another
     @age = options.fetch(:age, 0)
     @name = options.fetch(:name, "")
   end

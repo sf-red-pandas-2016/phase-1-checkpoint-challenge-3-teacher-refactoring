@@ -1,7 +1,7 @@
 require_relative 'employee'
 
 class ApprenticeTeacher < Employee
-  # attr_reader :salary, :phase, :target_raise
+
   attr_reader :target_raise
 
   RATING_COMPARISON=80
