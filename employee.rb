@@ -1,6 +1,11 @@
 require_relative 'high_five'
 
+
+
 class Employee
+
+  attr_reader :age, :salary
+  attr_accessor :name, :rating_for_raise, :phase, :target_raise
 
   include HighFive
 
@@ -8,10 +13,12 @@ class Employee
   def initialize(options={})
     @age = options.fetch(:age, 0)
     @name = options.fetch(:name, "")
+    @phase = self.class::PHASE
+    @rating_for_raise = self.class::RATING_FOR_RAISE
+    @target_raise = self.class::TARGET_RAISE
   end
 
   #same
-
 
   #same
   def set_phase(num)
@@ -31,8 +38,8 @@ class Employee
 
    def set_performance_rating(rating)
     response = ""
-    if rating > self.class::RATING_FOR_RAISE
-      receive_raise(self.class::TARGET_RAISE)
+    if rating > @rating_for_raise
+      receive_raise(@target_raise)
       response = "Yay, I'm a great employee!"
     else
       response += "Oh, well -- thanks to this actionable, specific, and kind "
