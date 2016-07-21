@@ -1,6 +1,12 @@
+require_relative 'teach_stuff'
+require_relative 'receive_raise'
+require_relative 'set_phase'
+require_relative 'offer_high_five'
+
 class Teacher
+
   attr_reader :age, :salary, :phase, :performance_rating, :target_raise
-  attr_accessor :name
+  attr_accessor :name, :new_salary
 
   def initialize(options={})
     @phase = 3
@@ -9,31 +15,21 @@ class Teacher
     @target_raise = 1000
   end
 
-  def offer_high_five
-    "High five!"
-  end
-
-  def set_phase(num)
-    @phase = num
-    "Cool, I've always wanted to teach phase #{num}!"
-  end
-
-  def teach_stuff
-    response = ""
-    response += "Listen, class, this is how everything works, fo SHO! "
-    response += "*drops flat-out insane knowledge bomb* "
-    response += "... You're welcome. *saunters away*"
-    response
-  end
+  include OfferHighFive
+  include SetPhase
+  include TeachStuff
 
   def salary=(new_salary)
     puts "This better be good!"
     @salary = new_salary
   end
 
-  def receive_raise(raise)
-    @salary += raise
-  end
+  # def salary=(new_salary)
+  #   puts "This better be good!"
+  #   @salary = new_salary
+  # end
+
+  include ReceiveRaise
 
   def set_performance_rating(rating)
     response = ""
