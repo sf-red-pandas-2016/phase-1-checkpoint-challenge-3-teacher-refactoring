@@ -2,7 +2,6 @@ require_relative 'human'
 require_relative 'module'
 
 class ApprenticeTeacher < Human
-  attr_reader  :salary, :target_raise
 
   include Teach
 

@@ -1,5 +1,6 @@
 module Teach
-
+  attr_reader :salary, :target_raise
+  
   def set_performance_rating(rating)
     response = ""
     if rating > self.class::RATING

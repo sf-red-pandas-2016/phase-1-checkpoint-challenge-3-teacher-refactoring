@@ -2,7 +2,7 @@ require_relative 'human'
 require_relative 'module'
 
 class Teacher < Human
-  attr_reader  :salary, :performance_rating, :target_raise
+  attr_reader   :performance_rating 
   include Teach
 
   RATING = 90
