@@ -1,3 +1,5 @@
+require_relative 'apprentice_teacher'
+
 module Positivity
   def offer_high_five
     "High five!"
@@ -5,8 +7,7 @@ module Positivity
 end 
 
 module TeacherAdministration
-  attr_reader :age, :salary, :phase, :target_raise
-  attr_accessor :name 
+  attr_reader  :salary, :target_raise
 
   def salary=(new_salary)
     puts "This better be good!"
@@ -23,20 +24,44 @@ module TeacherAdministration
   end
 end 
 
-class Teacher
-  attr_reader :performance_rating
+module SchoolInformation
+  attr_reader :age, :phase
+  attr_accessor :name
 
-  include Positivity
-  include TeacherAdministration
-
-  SET_RATING = 90
-  def initialize(options={}) 
+  def initialize(options = {})
     @phase = 3
     @age = options.fetch(:age, 0)
     @name = options.fetch(:name, "")
+  end
+end
+
+module Performance 
+ def set_performance_rating(rating)
+  response = ""
+  if rating > self.class::SET_RATING
+    receive_raise(@target_raise)
+    response = "Yay, I'm a great employee!"
+  else
+    response += "Oh, well -- thanks to this actionable, specific, and kind "
+    response += "feedback, I'll do better next time."
+  end
+  response
+  end 
+end 
+
+class Teacher 
+  attr_reader :performance_rating
+
+  include SchoolInformation 
+  include Positivity
+  include TeacherAdministration
+  include Performance
+  SET_RATING = 90
+
+  def initialize(options={}) 
+    super
     @target_raise = 1000
   end
- 
 
   def teach_stuff 
     response = ""
@@ -46,16 +71,4 @@ class Teacher
     response
   end
 
-
-  def set_performance_rating(rating)
-    response = ""
-    if rating > self.class::SET_RATING
-      receive_raise(@target_raise)
-      response = "Yay, I'm a great employee!"
-    else
-      response += "Oh, well -- thanks to this actionable, specific, and kind "
-      response += "feedback, I'll do better next time."
-    end
-    response
-  end
 end
