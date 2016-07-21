@@ -1,4 +1,6 @@
-class Student
+require_relative 'apprentice_teacher'
+
+class Student < ApprenticeTeacher
   attr_reader :age, :phase
   attr_accessor :name
 
@@ -8,9 +10,9 @@ class Student
     @name = options.fetch(:name, "")
   end
 
-  def offer_high_five
-    "High five!"
-  end
+  # def offer_high_five
+  #   "High five!"
+  # end
 
   def set_phase(num)
     response = ""
