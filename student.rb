@@ -1,18 +1,11 @@
-class Student
-  attr_reader :age, :phase
-  attr_accessor :name
+require_relative 'school_community'
+class Student < SchoolCommunity
 
   def initialize(options = {})
     @phase = 1
-    @age = options.fetch(:age, 0)
-    @name = options.fetch(:name, "")
   end
 
-  def offer_high_five
-    "High five!"
-  end
-
-  def set_phase(num)
+  def set_phase(num) #almost_same all, teach staff and student diff
     response = ""
     if num == @phase
       response += "I'm doing phase #{@phase} again because "
@@ -24,7 +17,7 @@ class Student
     response
   end
 
-  def learn_stuff
+  def learn_stuff #diff
     response = ""
     response += "WHOA! I've never thought of it quite like that before. "
     response += "Now I feel like a genius!"

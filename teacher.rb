@@ -1,43 +1,30 @@
-class Teacher
-  attr_reader :age, :salary, :phase, :performance_rating, :target_raise
-  attr_accessor :name
+require_relative 'teach_staff'
+class Teacher < TeachStaff
+    TARGET_RAISE = 1000
+
 
   def initialize(options={})
-    @phase = 3
-    @age = options.fetch(:age, 0)
-    @name = options.fetch(:name, "")
-    @target_raise = 1000
+  @performance_rating = 0
   end
 
-  def offer_high_five
-    "High five!"
-  end
-
-  def set_phase(num)
-    @phase = num
-    "Cool, I've always wanted to teach phase #{num}!"
-  end
-
-  def teach_stuff
-    response = ""
-    response += "Listen, class, this is how everything works, fo SHO! "
+  def teach_stuff #almost same teach staff
     response += "*drops flat-out insane knowledge bomb* "
     response += "... You're welcome. *saunters away*"
     response
   end
 
-  def salary=(new_salary)
+  def salary=(new_salary) # same teach staff
     puts "This better be good!"
     @salary = new_salary
   end
 
-  def receive_raise(raise)
+  def receive_raise(raise)# same teach staff
     @salary += raise
   end
 
-  def set_performance_rating(rating)
+  def set_performance_rating(rating) #almost same teach staff
     response = ""
-    if rating > 90
+    if rating > 90 # diff
       receive_raise(@target_raise)
       response = "Yay, I'm a great employee!"
     else
