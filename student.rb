@@ -4,6 +4,7 @@ class Student
   
   include Positivity
   include SchoolInformation 
+  
   def initialize(options = {})
     @phase = 1
     @age = options.fetch(:age, 0)
@@ -22,7 +23,7 @@ class Student
     response
   end
 
-  def learn_stuff #diff 
+  def learn_stuff 
     response = ""
     response += "WHOA! I've never thought of it quite like that before. "
     response += "Now I feel like a genius!"
