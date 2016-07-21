@@ -1,23 +1,25 @@
-require_relative 'teacher'
+require_relative 'dbc_community'
 
-class ApprenticeTeacher < Teacher
+class ApprenticeTeacher < DBCCommunity
   attr_reader :age, :salary, :phase, :target_raise
   attr_accessor :name
   
 
   def initialize(options={})
-    @age = options.fetch(:age, 0)
-    @name = options.fetch(:name, "")
+    # @age = options.fetch(:age, 0)
+    # @name = options.fetch(:name, "")
+    super
     @phase = 3
     @target_raise = 800
   end
 
-  def offer_high_five
-    "High five!"
-  end
+  # def offer_high_five
+  #   "High five!"
+  # end
 
   def set_phase(num)
-    @phase = num
+    # @phase = num
+    super
     "Cool, I've always wanted to teach phase #{num}!"
   end
 
