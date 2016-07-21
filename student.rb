@@ -1,4 +1,4 @@
-class Student
+teachingstaffclass Student
   attr_reader :age, :phase
   attr_accessor :name
 
