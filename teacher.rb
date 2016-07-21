@@ -3,8 +3,12 @@ require_relative 'teacher_class'
 class Teacher < ATeacher
   attr_reader :age
 
-  PERFORMANCE_RATING = 90
+  A_PERFORMANCE_RATING = 90
   TARGET_RAISE = 1000
+
+  def performance_rating
+    @performance_rating = 90
+  end
 
   def teach_stuff
     response = ""

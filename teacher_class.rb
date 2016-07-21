@@ -3,8 +3,8 @@ require_relative 'school_member'
 class ATeacher < SchoolMember
   attr_reader :salary
 
-  def performance_rating
-    self.class::PERFORMANCE_RATING
+  def a_performance_rating
+    self.class::A_PERFORMANCE_RATING
   end
 
   def target_raise
@@ -27,7 +27,7 @@ class ATeacher < SchoolMember
 
   def set_performance_rating(rating)
     response = ""
-    if rating > performance_rating
+    if rating > a_performance_rating
       receive_raise(target_raise)
       response = "Yay, I'm a great employee!"
     else
