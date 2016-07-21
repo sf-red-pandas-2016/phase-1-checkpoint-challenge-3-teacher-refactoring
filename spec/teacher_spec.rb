@@ -1,5 +1,5 @@
 require_relative '../teacher'
-
+require_relative '../school'
 describe Teacher do
   let(:jan) { Teacher.new({name: "Jan", age: 35}) }
   let(:default_teacher) { Teacher.new }
