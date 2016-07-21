@@ -8,10 +8,6 @@ class Student < Human
     @phase = 1
   end
 
-  def offer_high_five
-    "High five!"
-  end
-
   def set_phase(num)
     response = ""
     if num == @phase

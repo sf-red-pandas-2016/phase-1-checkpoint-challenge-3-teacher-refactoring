@@ -10,5 +10,4 @@ class Human
 		"High five!"
 	end
 
-
 end
