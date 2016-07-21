@@ -1,16 +1,17 @@
+require_relative 'teacher'
+
 class Student
   attr_reader :age, :phase
   attr_accessor :name
 
+  include Positivity
   def initialize(options = {})
     @phase = 1
     @age = options.fetch(:age, 0)
     @name = options.fetch(:name, "")
   end
 
-  def offer_high_five
-    "High five!"
-  end
+
 
   def set_phase(num)
     response = ""
@@ -24,7 +25,7 @@ class Student
     response
   end
 
-  def learn_stuff
+  def learn_stuff #diff 
     response = ""
     response += "WHOA! I've never thought of it quite like that before. "
     response += "Now I feel like a genius!"
