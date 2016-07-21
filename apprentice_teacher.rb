@@ -1,8 +1,12 @@
 require_relative 'dbc_community'
+require_relative 'teacher'
+require_relative 'teaching_module'
 
-class ApprenticeTeacher < DBCCommunity
-  attr_reader :age, :salary, :phase, :target_raise
-  attr_accessor :name
+class ApprenticeTeacher < DBCCommunity #< Teacher  #
+  include Teaching
+  attr_reader :age, :phase, :target_raise
+  attr_accessor :name, :salary
+  TARGET_RATING = 80
   
 
   def initialize(options={})
@@ -31,25 +35,25 @@ class ApprenticeTeacher < DBCCommunity
     response
   end
 
-  def salary=(new_salary)
-    puts "This better be good!"
-    @salary = new_salary
-  end
+  # def salary=(new_salary)
+  #   puts "This better be good!"
+  #   @salary = new_salary
+  # end
 
-  def receive_raise(raise)
-    @salary += raise
-  end
+  # def receive_raise(raise)
+  #   @salary += raise
+  # end
 
-  def set_performance_rating(rating)
-    response = ""
-    if rating > 80
-      response = "Yay, I'm a great employee!"
-      receive_raise(@target_raise)
-    else
-      response = "Oh, well -- thanks to this actionable, specific, and kind feedback, I'll do better next time."
-    end
-    response
-  end
+  # def set_performance_rating(rating)
+  #   response = ""
+  #   if rating > 80
+  #     response = "Yay, I'm a great employee!"
+  #     receive_raise(@target_raise)
+  #   else
+  #     response = "Oh, well -- thanks to this actionable, specific, and kind feedback, I'll do better next time."
+  #   end
+  #   response
+  # end
 
   def attend_training_session
     puts "Whoa. I know ruby-fu"
