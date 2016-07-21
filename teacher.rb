@@ -1,30 +1,10 @@
-class Teacher
-  attr_reader :age, :salary, :phase, :performance_rating, :target_raise
-  attr_accessor :name
+require_relative 'student'
 
-  def initialize(options={})
-    @phase = 3
-    @age = options.fetch(:age, 0)
-    @name = options.fetch(:name, "")
-    @target_raise = 1000
-  end
-
-  def offer_high_five
-    "High five!"
-  end
-
-  def set_phase(num)
+module TeachingStaffMethods
+    def set_phase(num)
     @phase = num
     "Cool, I've always wanted to teach phase #{num}!"
-  end
-
-  def teach_stuff
-    response = ""
-    response += "Listen, class, this is how everything works, fo SHO! "
-    response += "*drops flat-out insane knowledge bomb* "
-    response += "... You're welcome. *saunters away*"
-    response
-  end
+    end
 
   def salary=(new_salary)
     puts "This better be good!"
@@ -37,7 +17,7 @@ class Teacher
 
   def set_performance_rating(rating)
     response = ""
-    if rating > 90
+    if rating > self.rating_min
       receive_raise(@target_raise)
       response = "Yay, I'm a great employee!"
     else
@@ -46,4 +26,32 @@ class Teacher
     end
     response
   end
+
+  def teach_stuff
+    self.response
+  end
 end
+
+class TeachingStaff < School
+  attr_reader :salary, :target_raise, :rating_min, :response
+  include TeachingStaffMethods
+end
+
+class Teacher < TeachingStaff
+  attr_reader :performance_rating
+  def initialize(options={})
+    @phase = 3
+    @rating_min = 90
+    @response = "Listen, class, this is how everything works, fo SHO! *drops flat-out insane knowledge bomb* ... You're welcome. *saunters away*"
+    @target_raise = 1000
+    super
+  end
+end
+
+
+
+
+
+
+
+
