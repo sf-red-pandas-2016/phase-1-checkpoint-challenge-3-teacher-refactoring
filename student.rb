@@ -1,4 +1,7 @@
+require_relative 'high_five'
+
 class Student
+  include HighFive
   attr_reader :age, :phase
   attr_accessor :name
 
