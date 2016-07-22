@@ -1,29 +1,29 @@
-require_relative 'employee'
-
-class Teacher < Employee # inherit
-  attr_reader :salary, :performance_rating, :target_raise
-
-  EXPERIENCE = 5 # Teacher::EXPERIENCE
-
-  # attr_reader :age, :salary, :phase, :performance_rating, :target_raise
+class Person
+  attr_reader :age, :phase
+  attr_accessor :name
+  #   attr_reader :age, :salary, :phase, :performance_rating, :target_raise
   # attr_accessor :name
 
   def initialize(options={})
-    super # do the person initialize 1st then do the target raise
-    # @phase = 3
-    # @age = options.fetch(:age, 0)
-    # @name = options.fetch(:name, "")
-    @target_raise = 1000
+    @phase = 3
+    @age = options.fetch(:age, 0)
+    @name = options.fetch(:name, "")
+    # @target_raise = 1000
   end
 
-  # def offer_high_five
-  #   "High five!"
-  # end
+  def tell_experience
+    exp = self.class::EXPERIENCE # pulls custom EXPERIENCE AGE FROM classes below it
+    "I have #{exp} years of experience."
+  end
 
-  # def set_phase(num)
-  #   @phase = num
-  #   "Cool, I've always wanted to teach phase #{num}!"
-  # end
+  def offer_high_five
+    "High five!"
+  end
+
+  def set_phase(num)
+    @phase = num
+    "Cool, I've always wanted to teach phase #{num}!"
+  end
 
   # def teach_stuff
   #   response = ""
