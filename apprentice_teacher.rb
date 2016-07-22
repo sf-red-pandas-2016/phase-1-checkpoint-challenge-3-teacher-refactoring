@@ -1,6 +1,10 @@
-class ApprenticeTeacher
+require_relative 'employee'
+
+class ApprenticeTeacher < Employee
   attr_reader :age, :salary, :phase, :target_raise
   attr_accessor :name
+
+  EXPERIENCE = 4
 
   def initialize(options={})
     @age = options.fetch(:age, 0)
@@ -9,16 +13,20 @@ class ApprenticeTeacher
     @phase = 3
   end
 
-  def offer_high_five
-    "High five!"
+  def attend_training_session
+    puts "Whoa. I know ruby-fu"
   end
 
-  def set_phase(num)
-    @phase = num
-    "Cool, I've always wanted to teach phase #{num}!"
-  end
+  # def offer_high_five
+  #   "High five!"
+  # end
 
-  def teach_stuff
+  # def set_phase(num)
+  #   @phase = num
+  #   "Cool, I've always wanted to teach phase #{num}!"
+  # end
+
+  def teach_stuff # this overwrites one in employee
     response = ""
     response += "Listen, class, this is how everything works. "
     response += "*drops crazy knowledge bomb* "
@@ -26,16 +34,16 @@ class ApprenticeTeacher
     response
   end
 
-  def salary=(new_salary)
-    puts "This better be good!"
-    @salary = new_salary
-  end
+  # def salary=(new_salary)
+  #   puts "This better be good!"
+  #   @salary = new_salary
+  # end
 
-  def receive_raise(raise)
-    @salary += raise
-  end
+  # def receive_raise(raise)
+  #   @salary += raise
+  # end
 
-  def set_performance_rating(rating)
+  def set_performance_rating(rating) # this overwrites one in employee
     response = ""
     if rating > 80
       response = "Yay, I'm a great employee!"
@@ -46,7 +54,4 @@ class ApprenticeTeacher
     response
   end
 
-  def attend_training_session
-    puts "Whoa. I know ruby-fu"
-  end
 end
